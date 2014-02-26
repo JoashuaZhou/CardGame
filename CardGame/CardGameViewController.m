@@ -59,18 +59,15 @@
 {
     CGRect frame;   //CGRect不用指针*
     Card *card;
+    NSInteger i = 0;
     for (int row = 0; row < self.grid.rowCount/*[self.game numbersOfDealCards]*/; row++) {
         for (int column = 0; column < self.grid.columnCount; column++) {
-            card = [self.game cardAtIndex:row];
+            card = [self.game cardAtIndex:i];
             frame = [self.grid frameOfCellAtRow:row inColumn:column];
             UIView *cardView = [self createView:card withFrame:frame];
             [self.gridView addSubview:cardView];    //如果没有这句话，纸牌将不能显示在屏幕上
+            i++;
         }
-   // UIView *cardView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 64, 96)];
-    //if (card == nil) {
-   //     cardView.backgroundColor = [UIColor blueColor];
-    //}else
-     //   cardView.backgroundColor = [UIColor greenColor];
     }
 }
 

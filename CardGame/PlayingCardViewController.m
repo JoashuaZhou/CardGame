@@ -48,7 +48,7 @@
 }
 
 #pragma mark - initiation
-#define startCardsAmount 18;
+#define startCardsAmount 20;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
