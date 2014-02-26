@@ -8,44 +8,53 @@
 //  subclass of CardGameViewController
 
 #import "PlayingCardViewController.h"
+#import "PlayingCardView.h"
 #import "PlayingCardDeck.h"
+#import "PlayingCard.h"
 
 @interface PlayingCardViewController ()
-
+@property (strong, nonatomic) Deck *deck;
 @end
 
 @implementation PlayingCardViewController
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"CardMatchingHistory"]) {
-        if ([segue.destinationViewController isKindOfClass:[GameHistoryViewController class]]) {
-            GameHistoryViewController *historyController = (GameHistoryViewController *)segue.destinationViewController;
-            historyController.cardMatchingText = [[NSString alloc] init];
-            for (NSString *recordString in self.record) {
-                    historyController.cardMatchingText = [historyController.cardMatchingText stringByAppendingFormat:@"%@\n", recordString];
-            }
-        }
-    }
-}
 
 - (PlayingCardDeck *)createDeck
 {
     return [[PlayingCardDeck alloc] init];
 }
 
-- (NSAttributedString *)titleForCard:(Card *)card
+- (void)updateViewforCard:(UIView *)view card:(Card *)card
 {
-    if (card.isChosen) {
-        return [[NSAttributedString alloc] initWithString:card.contents attributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];   //无属性的AtrributedString就是NSString, 不过字体颜色和Global tint颜色一样
+    if ([view isKindOfClass:[PlayingCardView class]] && [card isKindOfClass:[PlayingCard class]]) {
+        PlayingCardView *cardView = (PlayingCardView *)view;
+        PlayingCard *playingCard = (PlayingCard *)card;
+        cardView.rank = playingCard.rank;
+        cardView.suit = playingCard.suit;
+        cardView.faceUp = playingCard.chosen;
     }
-    
-    return [[NSAttributedString alloc] initWithString:@""];     //alloc + init各种形式， AtrributeString和String的联系
 }
 
-- (UIImage *)backgroundImageForCard:(Card *)card
+- (UIView *)createView:(Card *)card withFrame:(CGRect)frame
 {
-    return [UIImage imageNamed:card.isChosen ? @"CardFront" : @"CardBack"];
+    if ([card isKindOfClass:[PlayingCard class]]) {
+        PlayingCard *playingCard = (PlayingCard *)card;
+        PlayingCardView *cardView = [[PlayingCardView alloc] initWithFrame:frame]; //initWithFrame is designated initializer
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:cardView action:@selector(tapGestureHandler)];
+        [cardView addGestureRecognizer:tapRecognizer];
+        [self updateViewforCard:cardView card:playingCard];
+        return cardView;
+    }
+    return nil;
+}
+
+#pragma mark - initiation
+#define startCardsAmount 18;
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.startCardsNumber = startCardsAmount;
+    self.cardSize = CGSizeMake(64, 96);
+    [self updateUI];
 }
 
 @end

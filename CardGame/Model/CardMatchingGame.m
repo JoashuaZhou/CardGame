@@ -55,33 +55,10 @@ static const int COST_TO_CHOOSE = 1;
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
-/*
-- (void)chooseCardAtIndex:(NSUInteger)index
+- (NSUInteger)numbersOfDealCards
 {
-    Card *card = [self cardAtIndex:index];
-    if (!card.isMatched) {
-        if (card.isChosen) {
-            card.chosen = NO;                       //如果选择已翻过来的牌，就会翻回去
-        }else{
-            for (Card *otherCard in self.cards) {           //误解：UI上对纸牌的点击并不会造成chosen=YES，要在model这里实现chosen=YES！
-                if (otherCard.isChosen && !otherCard.isMatched) {  //牌堆里已经有一个牌已经被选中的情况，otherCard就是之前被选中的牌
-                    int matchScore = [card match:@[otherCard]];
-                    if (matchScore) {
-                        self.score += matchScore * MATCH_BONUS;
-                        otherCard.matched = YES;
-                        card.matched = YES;
-                    } else {
-                        self.score -= MISMATCH_PENALTY;
-                        otherCard.chosen = NO;
-                    }
-                    break;
-                }
-            }
-            self.score -= COST_TO_CHOOSE;
-            card.chosen = YES;
-        }
-    }
-}*/
+    return [self.cards count];
+}
 
 - (NSString *)chooseCardAtIndex:(NSUInteger)index                   //Assignment 2, 3-card mode
 {

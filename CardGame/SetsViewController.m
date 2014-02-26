@@ -7,6 +7,9 @@
 //
 
 #import "SetsViewController.h"
+#import "SetCardView.h"
+#import "SetsCardDeck.h"
+#import "SetsCard.h"
 
 @interface SetsViewController ()
 
@@ -14,82 +17,46 @@
 
 @implementation SetsViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self updateUI];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"SetsHistory"]) {
-        if ([segue.destinationViewController isKindOfClass:[GameHistoryViewController class]]) {
-            GameHistoryViewController *historyController = (GameHistoryViewController *)segue.destinationViewController;
-            historyController.setCardText = [[NSString alloc] init];
-            for (NSString *recordString in self.record) {
-                historyController.setCardText = [historyController.setCardText stringByAppendingFormat:@"%@\n", recordString];
-            }
-        }
-    }
-}
-
 - (SetsCardDeck *)createDeck
 {
     return [[SetsCardDeck alloc] init];
 }
 
-- (NSMutableDictionary *)attributedDictionary:(Card *)card
+
+- (void)updateViewforCard:(UIView *)view card:(Card *)card
 {
-    NSMutableDictionary *attributedDictionary = [[NSMutableDictionary alloc] init];
-    if ([card isKindOfClass:[SetsCard class]]) {
-        SetsCard *setCard = (SetsCard *)card;
-        UIColor *cardColor = [self colorDictionary:setCard.color];
-        if ([setCard.shading isEqualToString:@"solid"]) {
-            attributedDictionary[NSForegroundColorAttributeName] = cardColor;   //NSMutableDictionary可以这样用
-        }
-        if ([setCard.shading isEqualToString:@"striped"])
-        {
-            attributedDictionary[NSStrokeColorAttributeName] = cardColor;
-            attributedDictionary[NSStrokeWidthAttributeName] = @-3;
-            attributedDictionary[NSForegroundColorAttributeName] = [cardColor colorWithAlphaComponent:0.2];
-        }
-        if ([setCard.shading isEqualToString:@"open"])
-        {
-            attributedDictionary[NSStrokeColorAttributeName] = cardColor;
-            attributedDictionary[NSStrokeWidthAttributeName] = @-3;
-            attributedDictionary[NSForegroundColorAttributeName] = [UIColor clearColor];    //透明
-        }
+    if ([view isKindOfClass:[SetCardView class]] && [card isKindOfClass:[SetsCard class]]) {
+        SetsCard *setcard = (SetsCard *)card;
+        SetCardView *cardView = (SetCardView *)view;
+        cardView.symbol = setcard.symbol;
+        cardView.color = setcard.color;
+        cardView.shading = setcard.shading;
+        cardView.number = setcard.number;
+        cardView.chosen = setcard.chosen;
     }
-    return attributedDictionary;
 }
 
-- (UIColor *)colorDictionary:(NSString *)colorString
-{
-    NSDictionary *colorDictionary = @{@"green": [UIColor greenColor],
-                                      @"red":   [UIColor redColor],
-                                      @"purple":[UIColor purpleColor]};
-    return colorDictionary[colorString];
-}
-
-- (NSAttributedString *)titleForCard:(Card *)card
+- (UIView *)createView:(Card *)card
 {
     if ([card isKindOfClass:[SetsCard class]]) {
-        SetsCard *setCard = (SetsCard *)card;
-        NSMutableString *cardString = [[NSMutableString alloc] initWithString:setCard.symbol];
-        for (int i = 0; i < (setCard.number-1); i++) {
-            [cardString appendString:@"\n"];
-            [cardString appendString:setCard.symbol];
-        }
-        NSAttributedString *cardContent = [[NSAttributedString alloc] initWithString:cardString attributes:[self attributedDictionary:setCard]];
-        return cardContent;
+        SetsCard *playingCard = (SetsCard *)card;
+        SetCardView *cardView = [[SetCardView alloc] initWithFrame:CGRectMake(20, 20, 64, 96)]; //initWithFrame is designated initializer
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:cardView action:@selector(tapGestureHandler)];
+        [cardView addGestureRecognizer:tapRecognizer];
+        [self updateViewforCard:cardView card:playingCard];
+        return cardView;
     }
     return nil;
 }
 
-- (UIImage *)backgroundImageForCard:(Card *)card
+#pragma mark - initiate startCardsAmount
+
+#define startCardsAmount 12;
+- (void)viewDidLoad
 {
-    return [UIImage imageNamed:card.isChosen ? @"SetCard_Chosen" : @"CardFront"];
+    [super viewDidLoad];
+    self.startCardsNumber = startCardsAmount;
+    [self updateUI];
 }
 
 @end

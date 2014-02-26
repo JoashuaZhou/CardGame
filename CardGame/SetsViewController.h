@@ -7,8 +7,6 @@
 //
 
 #import "CardGameViewController.h"
-#import "SetsCardDeck.h"
-#import "SetsCard.h"
 
 @interface SetsViewController : CardGameViewController
 

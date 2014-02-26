@@ -10,14 +10,17 @@
 #import "Card.h"
 #import "Deck.h"
 #import "GameHistoryViewController.h"
+#import "Grid.h"
 
 @interface CardGameViewController : UIViewController
 
 - (Deck *)createDeck;    //abstract   //lecture 6, make abstract method public, so others can implement it
 - (void)updateUI;
-- (NSAttributedString *)titleForCard:(Card *)card;
-- (UIImage *)backgroundImageForCard:(Card *)card;
+- (void)updateViewforCard:(UIView *)view card:(Card *)card;
+- (UIView *)createView:(Card *)card withFrame:(CGRect)frame;
 
 @property (strong, nonatomic) NSMutableArray *record;
+@property (nonatomic) NSInteger startCardsNumber;
+@property (nonatomic) CGSize cardSize;
 
 @end

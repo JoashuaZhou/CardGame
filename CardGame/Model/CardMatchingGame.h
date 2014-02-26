@@ -21,6 +21,8 @@
 - (Card *)cardAtIndex:(NSUInteger)index;
 - (void)resetScore;                         //claim the method in .h file，makes it public
 
+- (NSUInteger)numbersOfDealCards;
+
 @property (nonatomic, readonly) NSInteger score;
 
 @end
