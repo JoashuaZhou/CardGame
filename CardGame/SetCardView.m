@@ -67,15 +67,15 @@
 
 - (void)drawSymbol
 {
-   // if ([self.symbol isEqualToString:@"Diamond"]) {
-    //    [self drawDiamond];
-    //}
-   // if ([self.symbol isEqualToString:@"Squiggle"]) {
+    if ([self.symbol isEqualToString:@"diamond"]) {
+        [self drawDiamond];
+    }
+    if ([self.symbol isEqualToString:@"squiggle"]) {
        [self drawSquiggle];
-  //  }
-  //  if ([self.symbol isEqualToString:@"Oval"]) {
-   //     [self drawOval];
-    //}
+    }
+    if ([self.symbol isEqualToString:@"oval"]) {
+        [self drawOval];
+    }
 }
 
 - (void)drawDiamond  //Magic Number here
