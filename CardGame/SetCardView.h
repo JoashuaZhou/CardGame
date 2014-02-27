@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CardView.h"
 
-@interface SetCardView : UIView
+@interface SetCardView : CardView
 
 @property (strong, nonatomic) NSString *color;
 @property (strong, nonatomic) NSString *shading;
 @property (strong, nonatomic) NSString *symbol;
 @property (nonatomic) NSInteger number;
 @property (nonatomic) BOOL chosen;
-
-- (void)tapGestureHandler;
 
 @end

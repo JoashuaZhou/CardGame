@@ -36,11 +36,11 @@
     }
 }
 
-- (UIView *)createView:(Card *)card
+- (UIView *)createView:(Card *)card withFrame:(CGRect)frame
 {
     if ([card isKindOfClass:[SetsCard class]]) {
         SetsCard *playingCard = (SetsCard *)card;
-        SetCardView *cardView = [[SetCardView alloc] initWithFrame:CGRectMake(20, 20, 64, 96)]; //initWithFrame is designated initializer
+        SetCardView *cardView = [[SetCardView alloc] initWithFrame:frame]; //initWithFrame is designated initializer
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:cardView action:@selector(tapGestureHandler)];
         [cardView addGestureRecognizer:tapRecognizer];
         [self updateViewforCard:cardView card:playingCard];
@@ -56,6 +56,7 @@
 {
     [super viewDidLoad];
     self.startCardsNumber = startCardsAmount;
+    self.cardSize = CGSizeMake(64, 96);
     [self updateUI];
 }
 
