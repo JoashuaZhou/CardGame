@@ -29,12 +29,6 @@
     [self setNeedsDisplay]; //如果有些改变了这些值，就要重画纸牌
 }
 
-- (void)setFaceUp:(BOOL)faceUp
-{
-    _faceUp = faceUp;
-    [self setNeedsDisplay]; //如果有些改变了这些值，就要重画纸牌
-}
-
 - (NSString *)rankAsString
 {
     return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"][self.rank]; //这里的写法类似于：a[i];
@@ -44,7 +38,8 @@
 
 - (void)tapGestureHandler
 {
-    self.faceUp = !self.faceUp;
+    self.chosen = !self.chosen;
+//    [self.delegate tapGestureHandler];
 }
 
 #pragma mark - Drawing
@@ -71,7 +66,7 @@
     [[UIColor blackColor] setStroke];   //在圆角矩形边上描上黑边
     [roundedRect stroke];
     
-    if (self.faceUp) {
+    if (self.chosen) {
         UIImage *faceImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit]];
         if (faceImage) {    //有Image(J,Q,K)的牌就用Image，没有(除J,Q,K之外的牌)就画出来
             CGRect imageRect = CGRectInset(self.bounds,

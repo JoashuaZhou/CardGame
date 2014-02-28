@@ -9,10 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "CardView.h"
 
+
+//@protocol PlayingCardTapProtocol <NSObject>
+//
+//@required
+//-(void)tapGestureHandler;
+//
+//@end
+
+
 @interface PlayingCardView : CardView
 
 @property (nonatomic) NSUInteger rank;
 @property (strong, nonatomic) NSString *suit;
-@property (nonatomic) BOOL faceUp;
-
+//@property (nonatomic,weak) id <PlayingCardTapProtocol> delegate;
 @end
+

@@ -60,6 +60,11 @@ static const int COST_TO_CHOOSE = 1;
     return [self.cards count];
 }
 
+- (void)replaceCardAtIndex:(NSUInteger)index withCard:(Card *)card
+{
+    [self.cards replaceObjectAtIndex:index withObject:card];
+}
+
 - (NSString *)chooseCardAtIndex:(NSUInteger)index                   //Assignment 2, 3-card mode
 {
     NSString *robotSays = @"";              //这种初始化, 而不是nil

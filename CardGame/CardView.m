@@ -28,6 +28,18 @@
     [self setNeedsDisplay];     //如果有些改变了这些值，就要重画纸牌。要知道drawRect函数是不可以被调用的，使用[setNeedsDisplay]
 }
 
+- (void)setChosen:(BOOL)chosen
+{
+    _chosen = chosen;
+    [self setNeedsDisplay];
+}
+
+- (void)setMatched:(BOOL)matched
+{
+    _matched = matched;
+    [self setNeedsDisplay];
+}
+
 - (void)tapGestureHandler
 {
 }

@@ -8,7 +8,7 @@
 //  subclass of CardGameViewController
 
 #import "CardGameViewController.h"
-
-@interface PlayingCardViewController : CardGameViewController
+//#import "PlayingCardView.h"
+@interface PlayingCardViewController : CardGameViewController  /*<PlayingCardTapProtocol>*/
 
 @end

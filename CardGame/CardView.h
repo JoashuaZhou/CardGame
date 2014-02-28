@@ -10,6 +10,8 @@
 
 @interface CardView : UIView
 
+@property (nonatomic) BOOL chosen;
+@property (nonatomic) BOOL matched;
 @property (nonatomic) CGFloat faceCardScaleFactor;
 - (void)tapGestureHandler;
 

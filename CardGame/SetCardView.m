@@ -33,11 +33,6 @@
     _number = number;
     [self setNeedsDisplay];
 }
-- (void)setChosen:(BOOL)chosen
-{
-    _chosen = chosen;
-    [self setNeedsDisplay];
-}
 
 #pragma mark - drawing
 #define CORNER_FONT_STANDARD_HEIGHT 180.0

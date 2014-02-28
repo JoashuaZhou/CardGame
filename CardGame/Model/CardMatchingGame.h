@@ -17,6 +17,7 @@
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck;
 
+- (void)replaceCardAtIndex:(NSUInteger)index withCard:(Card *)card;
 - (NSString *)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 - (void)resetScore;                         //claim the method in .h file，makes it public

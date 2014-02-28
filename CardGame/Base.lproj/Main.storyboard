@@ -27,12 +27,12 @@
                                 <rect key="frame" x="180" y="464" width="120" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Deal Cards!">
+                                <state key="normal" title="Restart Game">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="restartGame" destination="vXZ-lx-hvc" eventType="touchUpInside" id="tq1-L2-1GZ"/>
+                                    <action selector="restartGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="64d-F3-CvH"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8p2-bB-1jH">
@@ -57,7 +57,7 @@
                         <barButtonItem key="rightBarButtonItem" title="History" id="ITe-GE-vss"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="gridView" destination="8p2-bB-1jH" id="F8E-KJ-Yp0"/>
+                        <outlet property="gridView" destination="8p2-bB-1jH" id="JHM-VH-BQa"/>
                         <outlet property="robotSays" destination="UTr-sm-wgy" id="ORs-A1-PE6"/>
                         <outlet property="scoreLable" destination="xcl-d4-iao" id="2Dj-pl-4bp"/>
                     </connections>
@@ -101,8 +101,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="restartGame" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Nly-hv-FNf"/>
-                                    <action selector="restartGame" destination="YJc-ue-ofl" eventType="touchUpInside" id="qwo-SE-1j3"/>
+                                    <action selector="dealCards:" destination="YJc-ue-ofl" eventType="touchUpInside" id="b7l-cf-giW"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rau-jm-CPP">
@@ -119,7 +118,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="gridView" destination="Rau-jm-CPP" id="yDl-4P-MQs"/>
+                        <outlet property="gridView" destination="Rau-jm-CPP" id="8R4-4h-H8d"/>
                         <outlet property="robotSays" destination="31h-d6-Uwm" id="BZW-Aa-qQQ"/>
                         <outlet property="scoreLable" destination="4Jd-7b-7pW" id="3yC-kf-WdT"/>
                     </connections>

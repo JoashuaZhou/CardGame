@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CardGame/CardGameViewController.m"
-            timestampString = "415022035.179932"
+            timestampString = "415282473.639037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23">
+            startingLineNumber = "21"
+            endingLineNumber = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CardGame/SetsViewController.m"
-            timestampString = "415026799.29446"
+            timestampString = "415294719.715008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CardGame/SetsViewController.m"
-            timestampString = "415026748.730889"
+            timestampString = "415289658.594707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "-createView:withFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -141,6 +141,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "9"
             endingLineNumber = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CardGame/SetsViewController.m"
+            timestampString = "415289658.594707"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-createView:withFrame:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

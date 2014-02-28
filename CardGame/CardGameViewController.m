@@ -8,13 +8,11 @@
 //  Blocks就是函数指针
 
 #import "CardGameViewController.h"
-#import "CardMatchingGame.h"
+
 
 @interface CardGameViewController ()
 
-@property (strong, nonatomic) CardMatchingGame *game;   //自己定义的就用strong，IBOutlet就用weak
-@property (strong, nonatomic) NSMutableArray *gamecards;
-@property (weak, nonatomic) IBOutlet UIView *gridView;
+//@property (strong, nonatomic) CardMatchingGame *game;   //自己定义的就用strong，IBOutlet就用weak
 @property (strong, nonatomic) Grid *grid;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLable;
 @property (weak, nonatomic) IBOutlet UILabel *robotSays;
@@ -55,7 +53,26 @@
     return nil;
 }
 
+- (void)flipCard:(CardView *)cardView
+{
+    [CardView transitionWithView:cardView duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{ cardView.chosen = !cardView.chosen; } completion:^(BOOL fin){ [self updateUI]; }];
+}
+
 - (void)updateUI
+{
+    for (CardView *cardView in self.gamecards) {
+        NSInteger index = [self.gamecards indexOfObject:cardView];
+        Card *card = [self.game cardAtIndex:index];
+        cardView.chosen = card.isChosen;
+        cardView.matched = card.isMatched;
+        if (cardView.matched) {
+//          [self.gamecards removeObjectAtIndex:index]; 为什么不行？因为remove之后，cardView后面的元素序号全变了
+            [CardView transitionWithView:cardView duration:1.8 options:UIViewAnimationOptionBeginFromCurrentState animations:^{ cardView.alpha = 0; } completion:^(BOOL fin){ if(fin)[cardView removeFromSuperview];}];
+        }
+    }
+}
+
+- (void)initialUI
 {
     CGRect frame;   //CGRect不用指针*
     Card *card;
@@ -64,19 +81,22 @@
         for (int column = 0; column < self.grid.columnCount; column++) {
             card = [self.game cardAtIndex:i];
             frame = [self.grid frameOfCellAtRow:row inColumn:column];
-            UIView *cardView = [self createView:card withFrame:frame];
+            CardView *cardView = [self createView:card withFrame:frame];
             [self.gridView addSubview:cardView];    //如果没有这句话，纸牌将不能显示在屏幕上
             i++;
         }
     }
 }
 
-- (void)updateViewforCard:(UIView *)view card:(Card *)card
+- (void)tapGestureHandler:(UITapGestureRecognizer *)tapRecognizer
 {
-    
+    CardView *cardView = (CardView *)tapRecognizer.view;
+    int index = [self.gamecards indexOfObject:cardView];
+    [self.game chooseCardAtIndex:index];
+    [self flipCard:cardView];
 }
 
-- (UIView *)createView:(Card *)card withFrame:(CGRect)frame
+- (CardView *)createView:(Card *)card withFrame:(CGRect)frame
 {
     return nil;
 }

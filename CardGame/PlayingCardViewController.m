@@ -23,28 +23,30 @@
     return [[PlayingCardDeck alloc] init];
 }
 
-- (void)updateViewforCard:(UIView *)view card:(Card *)card
-{
-    if ([view isKindOfClass:[PlayingCardView class]] && [card isKindOfClass:[PlayingCard class]]) {
-        PlayingCardView *cardView = (PlayingCardView *)view;
-        PlayingCard *playingCard = (PlayingCard *)card;
-        cardView.rank = playingCard.rank;
-        cardView.suit = playingCard.suit;
-        cardView.faceUp = playingCard.chosen;
-    }
-}
-
-- (UIView *)createView:(Card *)card withFrame:(CGRect)frame
+- (CardView *)createView:(Card *)card withFrame:(CGRect)frame
 {
     if ([card isKindOfClass:[PlayingCard class]]) {
         PlayingCard *playingCard = (PlayingCard *)card;
         PlayingCardView *cardView = [[PlayingCardView alloc] initWithFrame:frame]; //initWithFrame is designated initializer
-        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:cardView action:@selector(tapGestureHandler)];
+//        cardView.delegate = self;
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureHandler:)];
         [cardView addGestureRecognizer:tapRecognizer];
-        [self updateViewforCard:cardView card:playingCard];
+        cardView.rank = playingCard.rank;
+        cardView.suit = playingCard.suit;
+        cardView.chosen = playingCard.isChosen;
+        [self.gamecards addObject:cardView];
         return cardView;
     }
     return nil;
+}
+- (IBAction)restartGame:(UIButton *)sender
+{
+    for (CardView *cardView in self.gamecards) {
+        [cardView removeFromSuperview];
+    }
+    self.game = [[CardMatchingGame alloc] initWithCardCount:self.startCardsNumber usingDeck:[self createDeck]];
+    self.gamecards = [[NSMutableArray alloc] initWithCapacity:self.startCardsNumber];
+    [self initialUI];
 }
 
 #pragma mark - initiation
@@ -54,7 +56,7 @@
     [super viewDidLoad];
     self.startCardsNumber = startCardsAmount;
     self.cardSize = CGSizeMake(64, 96);
-    [self updateUI];
+    [self initialUI];
 }
 
 @end
