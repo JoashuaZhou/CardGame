@@ -39,6 +39,7 @@
     }
     return nil;
 }
+
 - (IBAction)restartGame:(UIButton *)sender
 {
     for (CardView *cardView in self.gamecards) {

@@ -61,7 +61,7 @@
                 cardView.number = setsCard.number;
                 cardView.chosen = setsCard.isChosen;
                 cardView.matched = setsCard.isMatched;
-                [self.gridView addSubview:cardView];
+                [CardView transitionWithView:cardView duration:2.0 options:UIViewAnimationOptionTransitionCurlDown animations:^{ cardView.alpha = 1.0; } completion:^(BOOL fin){ [self.gridView addSubview:cardView]; }];
             }
          }
     }
