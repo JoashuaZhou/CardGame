@@ -180,58 +180,117 @@
     }
 }
 
-- (void)drawOval
-{
+
+-(void)drawOneOvalWithStartPoint:(CGFloat)origin_y{
+    #define kRADIUS 0.1*self.bounds.size.height
+    #define kWIDTH 0.35*self.bounds.size.width
+    #define kCP_Y_OFFSET 0.1*self.bounds.size.height
+    #define kCP_X_OFFSET 0.13*self.bounds.size.height
+    
     UIBezierPath *oval = [[UIBezierPath alloc] init];
     [[[self fillColor] colorWithAlphaComponent:[self drawShading]] setFill];
     [[self fillColor] setStroke];
-    if (self.number == 1 || self.number == 3) {
-        [oval moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.4)];
-        [oval addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.6) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height / 2)];
-        [oval addLineToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.6)];
-        [oval addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.4) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height / 2)];
-        [oval closePath];
-        [oval fill];
-        [oval stroke];
+    
+    CGFloat origin_x = (self.bounds.size.width-kWIDTH)/2;
+    
+    [oval moveToPoint:CGPointMake(origin_x, origin_y - kRADIUS)];
+    
+    [oval addCurveToPoint:CGPointMake(origin_x, origin_y +kRADIUS)
+            controlPoint1:CGPointMake(origin_x - kCP_X_OFFSET, origin_y - kCP_Y_OFFSET)
+            controlPoint2:CGPointMake(origin_x - kCP_X_OFFSET, origin_y + kCP_Y_OFFSET)];
+    
+    [oval addLineToPoint:CGPointMake(origin_x + kWIDTH, origin_y + kRADIUS)];
+    
+    [oval addCurveToPoint:CGPointMake(origin_x + kWIDTH, origin_y - kRADIUS)
+            controlPoint1:CGPointMake(origin_x + kWIDTH + kCP_X_OFFSET, origin_y + kCP_Y_OFFSET)
+            controlPoint2:CGPointMake(origin_x + kWIDTH + kCP_X_OFFSET, origin_y - kCP_Y_OFFSET)];
+    
+    [oval closePath];
+    [oval fill];
+    [oval stroke];
+}
+- (void)drawOval{
+#define kORIGIN_Y1 self.bounds.size.height*0.5
+#define kORIGIN_Y2 self.bounds.size.height*0.35
+#define kORIGIN_Y3 self.bounds.size.height*0.25
+    if (self.number == 1)
+    {
+        [self drawOneOvalWithStartPoint:kORIGIN_Y1];
     }
-    if (self.number == 2) {
-        UIBezierPath *oval2 = [[UIBezierPath alloc] init];
-        [oval moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.25)];
-        [oval addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.45) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.35)];
-        [oval addLineToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.45)];
-        [oval addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.25) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.35)];
-        [oval closePath];
-        [oval fill];
-        [oval stroke];
-        
-        [oval2 moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.55)];
-        [oval2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.75) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.65)];
-        [oval2 addLineToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.75)];
-        [oval2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.55) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.65)];
-        [oval2 closePath];
-        [oval2 fill];
-        [oval2 stroke];
+    else if (self.number == 2){
+        [self drawOneOvalWithStartPoint:kORIGIN_Y2];
+        [self drawOneOvalWithStartPoint:self.bounds.size.height - kORIGIN_Y2];
     }
-    if (self.number == 3) {
-        UIBezierPath *oval2 = [[UIBezierPath alloc] init];
-        UIBezierPath *oval3 = [[UIBezierPath alloc] init];
-        [oval2 moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.1)];
-        [oval2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.3) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.2)];
-        [oval2 addLineToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.3)];
-        [oval2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.1) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.2)];
-        [oval2 closePath];
-        [oval2 fill];
-        [oval2 stroke];
-        
-        [oval3 moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.7)];
-        [oval3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.9) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.8)];
-        [oval3 addLineToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.9)];
-        [oval3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.7) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.8)];
-        [oval3 closePath];
-        [oval3 fill];
-        [oval3 stroke];
+    else if (self.number == 3){
+        [self drawOneOvalWithStartPoint:kORIGIN_Y1];
+        [self drawOneOvalWithStartPoint:kORIGIN_Y3];
+        [self drawOneOvalWithStartPoint:self.bounds.size.height - kORIGIN_Y3];
     }
 }
+
+//- (void)drawOval
+//{
+//    
+//    UIBezierPath *oval = [[UIBezierPath alloc] init];
+//    [[[self fillColor] colorWithAlphaComponent:[self drawShading]] setFill];
+//    [[self fillColor] setStroke];
+//    if (self.number == 1 || self.number == 3) {
+//        [oval moveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.4)];
+////        [oval addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.6) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height / 2)];
+//        [oval addCurveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.6) controlPoint1:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.425) controlPoint2:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.575)];
+//        [oval addLineToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.6)];
+////        [oval addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.4) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height / 2)];
+//        [oval addCurveToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.4) controlPoint1:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.575) controlPoint2:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.425)];
+//        [oval closePath];
+//        [oval fill];
+//        [oval stroke];
+//    }
+//    if (self.number == 2) {
+//        UIBezierPath *oval2 = [[UIBezierPath alloc] init];
+//        [oval moveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.25)];
+////        [oval addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.45) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.35)];
+//        [oval addCurveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.45) controlPoint1:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.275) controlPoint2:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.425)];
+//        [oval addLineToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.45)];
+////        [oval addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.25) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.35)];
+//        [oval addCurveToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.25) controlPoint1:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.425) controlPoint2:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.275)];
+//        [oval closePath];
+//        [oval fill];
+//        [oval stroke];
+//        
+//        [oval2 moveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.55)];
+////        [oval2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.75) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.65)];
+//        [oval2 addCurveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.75) controlPoint1:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.575) controlPoint2:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.725)];
+//        [oval2 addLineToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.75)];
+////        [oval2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.55) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.65)];
+//        [oval2 addCurveToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.55) controlPoint1:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.725) controlPoint2:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.575)];
+//        [oval2 closePath];
+//        [oval2 fill];
+//        [oval2 stroke];
+//    }
+//    if (self.number == 3) {
+//        UIBezierPath *oval2 = [[UIBezierPath alloc] init];
+//        UIBezierPath *oval3 = [[UIBezierPath alloc] init];
+//        [oval2 moveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.1)];
+////        [oval2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.3) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.2)];
+//        [oval2 addCurveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.3) controlPoint1:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.125) controlPoint2:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.275)];
+//        [oval2 addLineToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.3)];
+////        [oval2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.1) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.2)];
+//        [oval2 addCurveToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.1) controlPoint1:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.275) controlPoint2:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.125)];
+//        [oval2 closePath];
+//        [oval2 fill];
+//        [oval2 stroke];
+//        
+//        [oval3 moveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.7)];
+////        [oval3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.9) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.8)];
+//        [oval3 addCurveToPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.9) controlPoint1:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.725) controlPoint2:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.875)];
+//        [oval3 addLineToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.9)];
+////        [oval3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.7) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.8)];
+//        [oval3 addCurveToPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.7) controlPoint1:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.875) controlPoint2:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.725)];
+//        [oval3 closePath];
+//        [oval3 fill];
+//        [oval3 stroke];
+//    }
+//}
 
 - (UIColor *)fillColor
 {

@@ -42,9 +42,11 @@
 
 - (IBAction)restartGame:(UIButton *)sender
 {
-    for (CardView *cardView in self.gamecards) {
+    for (CardView *cardView in self.gamecards)
+    {
         [cardView removeFromSuperview];
     }
+    sleep(2);
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.startCardsNumber usingDeck:[self createDeck]];
     self.gamecards = [[NSMutableArray alloc] initWithCapacity:self.startCardsNumber];
     [self initialUI];

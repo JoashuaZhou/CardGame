@@ -16,15 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcl-d4-iao">
-                                <rect key="frame" x="20" y="464" width="120" height="20"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcl-d4-iao">
+                                <rect key="frame" x="20" y="484" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLY-xb-el0">
-                                <rect key="frame" x="180" y="464" width="120" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLY-xb-el0">
+                                <rect key="frame" x="194" y="478" width="106" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Restart Game">
@@ -35,22 +35,36 @@
                                     <action selector="restartGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="64d-F3-CvH"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8p2-bB-1jH">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8p2-bB-1jH">
                                 <rect key="frame" x="20" y="20" width="280" height="402"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  Choose a Card to Start the game!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="UTr-sm-wgy">
-                                        <rect key="frame" x="0.0" y="352" width="280" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Card to Start the game!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="UTr-sm-wgy">
+                                <rect key="frame" x="20" y="430" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="p7f-VI-0U0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="w0q-WV-i8Q" firstAttribute="top" secondItem="xLY-xb-el0" secondAttribute="bottom" constant="20" symbolic="YES" id="7dg-ED-9EL"/>
+                            <constraint firstAttribute="bottom" secondItem="8p2-bB-1jH" secondAttribute="bottom" constant="146" id="HRC-EJ-vQE"/>
+                            <constraint firstItem="UTr-sm-wgy" firstAttribute="top" secondItem="8p2-bB-1jH" secondAttribute="bottom" constant="8" symbolic="YES" id="HcF-gX-UOa"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="Nnl-TX-d6G"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" symbolic="YES" id="Wwe-zl-Q1k"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="trailing" secondItem="xLY-xb-el0" secondAttribute="trailing" id="e8u-Z4-YMx"/>
+                            <constraint firstItem="xcl-d4-iao" firstAttribute="baseline" secondItem="xLY-xb-el0" secondAttribute="baseline" id="qam-1P-YXe"/>
+                            <constraint firstItem="UTr-sm-wgy" firstAttribute="leading" secondItem="xcl-d4-iao" secondAttribute="leading" id="tV8-Xw-FCk"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="leading" secondItem="xcl-d4-iao" secondAttribute="leading" id="xyM-FR-s9T"/>
+                            <constraint firstItem="UTr-sm-wgy" firstAttribute="trailing" secondItem="xLY-xb-el0" secondAttribute="trailing" id="zhO-Ap-eYW"/>
+                            <constraint firstAttribute="trailing" secondItem="8p2-bB-1jH" secondAttribute="trailing" constant="20" symbolic="YES" id="zpf-Xi-Tv4"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Card Matching Game" id="BzA-v9-M9i"/>
                     <navigationItem key="navigationItem" title="Card Matching" id="iFz-mz-2sk">
@@ -78,22 +92,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jd-7b-7pW">
-                                <rect key="frame" x="20" y="485" width="120" height="20"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jd-7b-7pW">
+                                <rect key="frame" x="20" y="484" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  Choose a Card to Start the game!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="31h-d6-Uwm">
-                                <rect key="frame" x="20" y="440" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUY-AM-WR5">
-                                <rect key="frame" x="180" y="485" width="120" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUY-AM-WR5">
+                                <rect key="frame" x="210" y="478" width="90" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Deal Cards!">
@@ -104,13 +111,36 @@
                                     <action selector="dealCards:" destination="YJc-ue-ofl" eventType="touchUpInside" id="b7l-cf-giW"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rau-jm-CPP">
-                                <rect key="frame" x="20" y="20" width="280" height="415"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rau-jm-CPP">
+                                <rect key="frame" x="20" y="20" width="280" height="402"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Choose a Card to Start the game!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="31h-d6-Uwm">
+                                <rect key="frame" x="20" y="430" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uX4-Y9-23V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="31h-d6-Uwm" firstAttribute="trailing" secondItem="mUY-AM-WR5" secondAttribute="trailing" id="4O7-Aa-zcA"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="leading" secondItem="4Jd-7b-7pW" secondAttribute="leading" id="4uH-dz-5wF"/>
+                            <constraint firstItem="4Jd-7b-7pW" firstAttribute="baseline" secondItem="mUY-AM-WR5" secondAttribute="baseline" id="5mp-KA-FUg"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="trailing" secondItem="mUY-AM-WR5" secondAttribute="trailing" id="7zX-xC-gkJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Rau-jm-CPP" secondAttribute="trailing" constant="20" symbolic="YES" id="AIP-zh-P04"/>
+                            <constraint firstAttribute="bottom" secondItem="Rau-jm-CPP" secondAttribute="bottom" constant="146" id="CZI-ed-jfV"/>
+                            <constraint firstItem="31h-d6-Uwm" firstAttribute="top" secondItem="Rau-jm-CPP" secondAttribute="bottom" constant="8" symbolic="YES" id="FwE-f2-EE7"/>
+                            <constraint firstItem="31h-d6-Uwm" firstAttribute="leading" secondItem="4Jd-7b-7pW" secondAttribute="leading" id="eV7-QN-iE5"/>
+                            <constraint firstItem="Ku7-s1-rHz" firstAttribute="top" secondItem="mUY-AM-WR5" secondAttribute="bottom" constant="20" symbolic="YES" id="sdk-3A-CXT"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="leading" secondItem="SCq-Yh-rcu" secondAttribute="leading" constant="20" symbolic="YES" id="v0o-F9-UJT"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="top" secondItem="SCq-Yh-rcu" secondAttribute="top" constant="20" symbolic="YES" id="zzD-cU-RTS"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sets Card Game" id="slf-fD-s5i"/>
                     <navigationItem key="navigationItem" title="SetsCard Game" id="dSN-N3-XLZ">

@@ -53,17 +53,19 @@
     return nil;
 }
 
-- (void)flipCard:(CardView *)cardView
-{
-    [CardView transitionWithView:cardView duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{ cardView.chosen = !cardView.chosen; } completion:^(BOOL fin){ [self updateUI]; }];
-}
+//- (void)flipCard:(CardView *)cardView
+//{
+//    [CardView transitionWithView:cardView duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{ cardView.chosen = !cardView.chosen; } completion:^(BOOL fin){ [self updateUI]; }];
+//}
 
 - (void)updateUI
 {
     for (CardView *cardView in self.gamecards) {
         NSInteger index = [self.gamecards indexOfObject:cardView];
         Card *card = [self.game cardAtIndex:index];
-        cardView.chosen = card.isChosen;
+        if (cardView.chosen != card.isChosen) {
+            [CardView transitionWithView:cardView duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{ cardView.chosen = card.isChosen; } completion:^(BOOL fin){}];      //flip cards
+        }
         cardView.matched = card.isMatched;
         if (cardView.matched) {
 //          [self.gamecards removeObjectAtIndex:index]; 为什么不行？因为remove之后，cardView后面的元素序号全变了
@@ -93,7 +95,8 @@
     CardView *cardView = (CardView *)tapRecognizer.view;
     int index = [self.gamecards indexOfObject:cardView];
     [self.game chooseCardAtIndex:index];
-    [self flipCard:cardView];
+//    [self flipCard:cardView];
+    [self updateUI];
 }
 
 - (CardView *)createView:(Card *)card withFrame:(CGRect)frame

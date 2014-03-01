@@ -28,6 +28,20 @@
     return _setsDeck;
 }
 
+- (void)updateUI
+{
+    for (CardView *cardView in self.gamecards) {
+        NSInteger index = [self.gamecards indexOfObject:cardView];
+        Card *card = [self.game cardAtIndex:index];
+        cardView.chosen = card.isChosen;
+        cardView.matched = card.isMatched;
+        if (cardView.matched) {
+            //          [self.gamecards removeObjectAtIndex:index]; 为什么不行？因为remove之后，cardView后面的元素序号全变了
+            [CardView transitionWithView:cardView duration:1.8 options:UIViewAnimationOptionBeginFromCurrentState animations:^{ cardView.alpha = 0; } completion:^(BOOL fin){ if(fin)[cardView removeFromSuperview];}];
+        }
+    }
+}
+
 - (CardView *)createView:(Card *)card withFrame:(CGRect)frame
 {
     if ([card isKindOfClass:[SetsCard class]]) {
@@ -61,20 +75,11 @@
                 cardView.number = setsCard.number;
                 cardView.chosen = setsCard.isChosen;
                 cardView.matched = setsCard.isMatched;
-                [CardView transitionWithView:cardView duration:2.0 options:UIViewAnimationOptionTransitionCurlDown animations:^{ cardView.alpha = 1.0; } completion:^(BOOL fin){ [self.gridView addSubview:cardView]; }];
+                [CardView transitionWithView:cardView duration:2.0 options:UIViewAnimationOptionTransitionCurlUp animations:^{ cardView.alpha = 1.0; } completion:^(BOOL fin){ [self.gridView addSubview:cardView]; }];
             }
          }
     }
 }
-
-- (void)tapGestureHandler:(UITapGestureRecognizer *)tapRecognizer
-{
-    CardView *cardView = (CardView *)tapRecognizer.view;
-    int index = [self.gamecards indexOfObject:cardView];
-    [self.game chooseCardAtIndex:index];
-    [self updateUI];
-}
-
 
 #pragma mark - initiate startCardsAmount
 
