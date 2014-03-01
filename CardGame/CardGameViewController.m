@@ -21,6 +21,7 @@
 
 @implementation CardGameViewController
 
+#pragma mark - lazy initialization
 - (CardMatchingGame *)game
 {
     if (!_game) {
@@ -32,7 +33,7 @@
 - (Grid *)grid
 {
     if (!_grid) {
-        _grid = [[Grid alloc] init];
+        _grid = [[Grid alloc] init];    //[Grid new] = [[Grid alloc] init]，但是你用designated initializer就不要用new了
         _grid.minimumNumberOfCells = self.startCardsNumber;
         _grid.cellAspectRatio = self.cardSize.width / self.cardSize.height;
         _grid.size = self.gridView.frame.size;
@@ -50,8 +51,25 @@
 
 - (Deck *)createDeck
 {
+    NSLog(@"%@",@"nil method!!");
     return nil;
 }
+
+- (UIDynamicAnimator *)animator
+{
+    if (!_animator) {
+        _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.gridView];
+    }
+    return _animator;
+}
+
+//- (UIAttachmentBehavior *)attachCards     //因为AttachmentBehavior没有addItem的方法，所以只能用到的时候initWithItem，故不用lazy initialization
+//{
+//    if (!_attachCards) {
+//        _attachCards = [[UIAttachmentBehavior alloc] init];
+//    }
+//    return _attachCards;
+//}
 
 //- (void)flipCard:(CardView *)cardView
 //{
@@ -74,6 +92,27 @@
     }
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self.gamecards makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.grid.size = self.gridView.frame.size;      //设备旋转后，gridView的size改变了，所以要重新设置grid
+    __block NSInteger index = 0;        //如果不加__block，index就是只读的
+    [CardView animateWithDuration:1.0
+                       animations:^{
+                            for (int row = 0; row < self.grid.rowCount; row++) {
+                                for (int column = 0; column < self.grid.columnCount; column++) {
+                                    if (index < self.startCardsNumber) {        //设备旋转时行列会改变，纸牌不一定能排成矩形，但grid是矩形，所以i可能会产生数组越界
+                                        CardView *cardView = (CardView *)self.gamecards[index];
+                                        cardView.frame = [self.grid frameOfCellAtRow:row inColumn:column];
+                                        [self.gridView addSubview:cardView];
+                                        index++;
+                                    }
+                                }
+                            }
+                       }
+     ];
+}
+
 - (void)initialUI
 {
     CGRect frame;   //CGRect不用指针*
@@ -81,11 +120,13 @@
     NSInteger i = 0;
     for (int row = 0; row < self.grid.rowCount/*[self.game numbersOfDealCards]*/; row++) {
         for (int column = 0; column < self.grid.columnCount; column++) {
-            card = [self.game cardAtIndex:i];
-            frame = [self.grid frameOfCellAtRow:row inColumn:column];
-            CardView *cardView = [self createView:card withFrame:frame];
-            [self.gridView addSubview:cardView];    //如果没有这句话，纸牌将不能显示在屏幕上
-            i++;
+            if (i < self.startCardsNumber) {            //设备旋转时行列会改变，纸牌不一定能排成矩形，但grid是矩形，所以i可能会产生数组越界
+                card = [self.game cardAtIndex:i];
+                frame = [self.grid frameOfCellAtRow:row inColumn:column];
+                CardView *cardView = [self createView:card withFrame:frame];
+                [self.gridView addSubview:cardView];    //如果没有这句话，纸牌将不能显示在屏幕上
+                i++;
+            }
         }
     }
 }

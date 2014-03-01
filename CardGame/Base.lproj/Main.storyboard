@@ -9,8 +9,8 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="PlayingCardViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="U5g-IF-Y1w"/>
-                        <viewControllerLayoutGuide type="bottom" id="w0q-WV-i8Q"/>
+                        <viewControllerLayoutGuide type="top" id="DUb-1Z-Iyo"/>
+                        <viewControllerLayoutGuide type="bottom" id="ROG-vq-gkw"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -41,11 +41,8 @@
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Card to Start the game!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="UTr-sm-wgy">
-                                <rect key="frame" x="20" y="430" width="280" height="30"/>
+                                <rect key="frame" x="20" y="430" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="p7f-VI-0U0"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -53,23 +50,24 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="w0q-WV-i8Q" firstAttribute="top" secondItem="xLY-xb-el0" secondAttribute="bottom" constant="20" symbolic="YES" id="7dg-ED-9EL"/>
-                            <constraint firstAttribute="bottom" secondItem="8p2-bB-1jH" secondAttribute="bottom" constant="146" id="HRC-EJ-vQE"/>
-                            <constraint firstItem="UTr-sm-wgy" firstAttribute="top" secondItem="8p2-bB-1jH" secondAttribute="bottom" constant="8" symbolic="YES" id="HcF-gX-UOa"/>
-                            <constraint firstItem="8p2-bB-1jH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="Nnl-TX-d6G"/>
-                            <constraint firstItem="8p2-bB-1jH" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" symbolic="YES" id="Wwe-zl-Q1k"/>
-                            <constraint firstItem="8p2-bB-1jH" firstAttribute="trailing" secondItem="xLY-xb-el0" secondAttribute="trailing" id="e8u-Z4-YMx"/>
-                            <constraint firstItem="xcl-d4-iao" firstAttribute="baseline" secondItem="xLY-xb-el0" secondAttribute="baseline" id="qam-1P-YXe"/>
-                            <constraint firstItem="UTr-sm-wgy" firstAttribute="leading" secondItem="xcl-d4-iao" secondAttribute="leading" id="tV8-Xw-FCk"/>
-                            <constraint firstItem="8p2-bB-1jH" firstAttribute="leading" secondItem="xcl-d4-iao" secondAttribute="leading" id="xyM-FR-s9T"/>
-                            <constraint firstItem="UTr-sm-wgy" firstAttribute="trailing" secondItem="xLY-xb-el0" secondAttribute="trailing" id="zhO-Ap-eYW"/>
-                            <constraint firstAttribute="trailing" secondItem="8p2-bB-1jH" secondAttribute="trailing" constant="20" symbolic="YES" id="zpf-Xi-Tv4"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="leading" secondItem="xcl-d4-iao" secondAttribute="leading" id="7ca-NF-45I"/>
+                            <constraint firstAttribute="bottom" secondItem="8p2-bB-1jH" secondAttribute="bottom" constant="146" id="Der-Ep-4me"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="trailing" secondItem="UTr-sm-wgy" secondAttribute="trailing" id="Gt3-SJ-JDJ"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="LCH-JT-4bh"/>
+                            <constraint firstItem="UTr-sm-wgy" firstAttribute="top" secondItem="8p2-bB-1jH" secondAttribute="bottom" constant="8" symbolic="YES" id="OhE-pL-FkU"/>
+                            <constraint firstAttribute="trailing" secondItem="8p2-bB-1jH" secondAttribute="trailing" constant="20" symbolic="YES" id="bKE-zH-AnB"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="trailing" secondItem="xLY-xb-el0" secondAttribute="trailing" id="dRj-mn-dGP"/>
+                            <constraint firstItem="xcl-d4-iao" firstAttribute="top" secondItem="8p2-bB-1jH" secondAttribute="bottom" constant="62" id="kke-p4-arn"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" symbolic="YES" id="kvh-yw-SVQ"/>
+                            <constraint firstItem="8p2-bB-1jH" firstAttribute="leading" secondItem="UTr-sm-wgy" secondAttribute="leading" id="weL-ie-j2R"/>
+                            <constraint firstItem="xLY-xb-el0" firstAttribute="baseline" secondItem="xcl-d4-iao" secondAttribute="baseline" id="yFF-1t-Ja9"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Card Matching Game" id="BzA-v9-M9i"/>
                     <navigationItem key="navigationItem" title="Card Matching" id="iFz-mz-2sk">
                         <barButtonItem key="rightBarButtonItem" title="History" id="ITe-GE-vss"/>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="gridView" destination="8p2-bB-1jH" id="JHM-VH-BQa"/>
                         <outlet property="robotSays" destination="UTr-sm-wgy" id="ORs-A1-PE6"/>
@@ -85,8 +83,8 @@
             <objects>
                 <viewController id="YJc-ue-ofl" customClass="SetsViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ggd-if-J0K"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ku7-s1-rHz"/>
+                        <viewControllerLayoutGuide type="top" id="P7Y-Xj-sTG"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eeb-Ie-EYI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SCq-Yh-rcu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -116,12 +114,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Choose a Card to Start the game!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="31h-d6-Uwm">
-                                <rect key="frame" x="20" y="430" width="280" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Card to Start the game!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="31h-d6-Uwm">
+                                <rect key="frame" x="20" y="430" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uX4-Y9-23V"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -129,17 +124,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="31h-d6-Uwm" firstAttribute="trailing" secondItem="mUY-AM-WR5" secondAttribute="trailing" id="4O7-Aa-zcA"/>
-                            <constraint firstItem="Rau-jm-CPP" firstAttribute="leading" secondItem="4Jd-7b-7pW" secondAttribute="leading" id="4uH-dz-5wF"/>
-                            <constraint firstItem="4Jd-7b-7pW" firstAttribute="baseline" secondItem="mUY-AM-WR5" secondAttribute="baseline" id="5mp-KA-FUg"/>
-                            <constraint firstItem="Rau-jm-CPP" firstAttribute="trailing" secondItem="mUY-AM-WR5" secondAttribute="trailing" id="7zX-xC-gkJ"/>
-                            <constraint firstAttribute="trailing" secondItem="Rau-jm-CPP" secondAttribute="trailing" constant="20" symbolic="YES" id="AIP-zh-P04"/>
-                            <constraint firstAttribute="bottom" secondItem="Rau-jm-CPP" secondAttribute="bottom" constant="146" id="CZI-ed-jfV"/>
-                            <constraint firstItem="31h-d6-Uwm" firstAttribute="top" secondItem="Rau-jm-CPP" secondAttribute="bottom" constant="8" symbolic="YES" id="FwE-f2-EE7"/>
-                            <constraint firstItem="31h-d6-Uwm" firstAttribute="leading" secondItem="4Jd-7b-7pW" secondAttribute="leading" id="eV7-QN-iE5"/>
-                            <constraint firstItem="Ku7-s1-rHz" firstAttribute="top" secondItem="mUY-AM-WR5" secondAttribute="bottom" constant="20" symbolic="YES" id="sdk-3A-CXT"/>
-                            <constraint firstItem="Rau-jm-CPP" firstAttribute="leading" secondItem="SCq-Yh-rcu" secondAttribute="leading" constant="20" symbolic="YES" id="v0o-F9-UJT"/>
-                            <constraint firstItem="Rau-jm-CPP" firstAttribute="top" secondItem="SCq-Yh-rcu" secondAttribute="top" constant="20" symbolic="YES" id="zzD-cU-RTS"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="trailing" secondItem="31h-d6-Uwm" secondAttribute="trailing" id="2xf-vA-z3v"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="leading" secondItem="4Jd-7b-7pW" secondAttribute="leading" id="70C-ad-RfJ"/>
+                            <constraint firstItem="4Jd-7b-7pW" firstAttribute="top" secondItem="Rau-jm-CPP" secondAttribute="bottom" constant="62" id="Fcp-0v-Kaz"/>
+                            <constraint firstItem="31h-d6-Uwm" firstAttribute="top" secondItem="Rau-jm-CPP" secondAttribute="bottom" constant="8" symbolic="YES" id="Uuh-ht-oge"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="leading" secondItem="31h-d6-Uwm" secondAttribute="leading" id="gxZ-Td-Nef"/>
+                            <constraint firstAttribute="trailing" secondItem="Rau-jm-CPP" secondAttribute="trailing" constant="20" symbolic="YES" id="jYu-BJ-bKu"/>
+                            <constraint firstAttribute="bottom" secondItem="Rau-jm-CPP" secondAttribute="bottom" constant="146" id="m38-lo-K3u"/>
+                            <constraint firstItem="mUY-AM-WR5" firstAttribute="baseline" secondItem="4Jd-7b-7pW" secondAttribute="baseline" id="pW7-7N-cwt"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="top" secondItem="SCq-Yh-rcu" secondAttribute="top" constant="20" symbolic="YES" id="ps3-b5-FLK"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="leading" secondItem="SCq-Yh-rcu" secondAttribute="leading" constant="20" symbolic="YES" id="q1Z-zi-J6s"/>
+                            <constraint firstItem="Rau-jm-CPP" firstAttribute="trailing" secondItem="mUY-AM-WR5" secondAttribute="trailing" id="wGV-10-osQ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sets Card Game" id="slf-fD-s5i"/>
