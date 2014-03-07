@@ -27,7 +27,6 @@
 @property (nonatomic) NSInteger startCardsNumber;
 @property (nonatomic) CGSize cardSize;
 @property (strong, nonatomic) UIDynamicAnimator *animator;
-@property (strong, nonatomic) UIAttachmentBehavior *attachCards;
 
 
 @property (strong, nonatomic) CardMatchingGame *game;   //自己定义的就用strong，IBOutlet就用weak

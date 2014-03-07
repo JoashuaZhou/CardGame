@@ -128,58 +128,151 @@
 
 - (void)drawSquiggle
 {
-    UIBezierPath *squiggle = [[UIBezierPath alloc] init];
-    [[[self fillColor] colorWithAlphaComponent:[self drawShading]] setFill];
-    [[self fillColor] setStroke];
-    if (self.number == 1 || self.number == 3) {
-        [squiggle moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.6)];
-        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.45) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.35)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
-        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.4) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.5)];
-        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.55) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.65)];
-        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.6) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.5)];
-        [squiggle fill];
-        [squiggle stroke];
+//    UIBezierPath *squiggle = [[UIBezierPath alloc] init];
+//    [[[self fillColor] colorWithAlphaComponent:[self drawShading]] setFill];
+//    [[self fillColor] setStroke];
+//    if (self.number == 1 || self.number == 3) {
+//        [squiggle moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.6)];
+//        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.45) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.35)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
+//        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.4) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.5)];
+//        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.55) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.65)];
+//        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.6) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.5)];
+//        [squiggle fill];
+//        [squiggle stroke];
+//    }
+//    if (self.number == 2) {
+//        UIBezierPath *squiggle2 = [[UIBezierPath alloc] init];
+//        [squiggle moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.45)];
+//        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.3) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.2)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
+//        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.25) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.35)];
+//        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.4) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.5)];
+//        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.45) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.35)];
+//        [squiggle fill];
+//        [squiggle stroke];
+//        
+//        [squiggle2 moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.75)];
+//        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.6) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.5)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
+//        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.55) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.65)];
+//        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.7) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.8)];
+//        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.75) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.65)];
+//        [squiggle2 fill];
+//        [squiggle2 stroke];
+//    }
+//    if (self.number == 3) {
+//        UIBezierPath *squiggle2 = [[UIBezierPath alloc] init];
+//        UIBezierPath *squiggle3 = [[UIBezierPath alloc] init];
+//        
+//        [squiggle2 moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.3)];
+//        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.15) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.05)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
+//        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.1) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.2)];
+//        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.25) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.35)];
+//        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.3) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.2)];
+//        [squiggle2 fill];
+//        [squiggle2 stroke];
+//        
+//        [squiggle3 moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.9)];
+//        [squiggle3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.75) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.65)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
+//        [squiggle3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.7) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.8)];
+//        [squiggle3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.85) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.95)];
+//        [squiggle3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.9) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.8)];
+//        [squiggle3 fill];
+//        [squiggle3 stroke];
+//    }
+    
+    
+    
+#define kORIGIN_Y1 self.bounds.size.height*0.5
+#define kORIGIN_Y2 self.bounds.size.height*0.35
+#define kORIGIN_Y3 self.bounds.size.height*0.25
+    if (self.number == 1)
+    {
+        [self drawOneSquiggleWithStartPoint:kORIGIN_Y1];
     }
-    if (self.number == 2) {
-        UIBezierPath *squiggle2 = [[UIBezierPath alloc] init];
-        [squiggle moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.45)];
-        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.3) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.2)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
-        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.25) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.35)];
-        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.4) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.5)];
-        [squiggle addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.45) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.35)];
-        [squiggle fill];
-        [squiggle stroke];
-        
-        [squiggle2 moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.75)];
-        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.6) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.5)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
-        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.55) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.65)];
-        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.7) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.8)];
-        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.75) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.65)];
-        [squiggle2 fill];
-        [squiggle2 stroke];
+    else if (self.number == 2){
+        [self drawOneSquiggleWithStartPoint:kORIGIN_Y2];
+        [self drawOneSquiggleWithStartPoint:self.bounds.size.height - kORIGIN_Y2];
     }
-    if (self.number == 3) {
-        UIBezierPath *squiggle2 = [[UIBezierPath alloc] init];
-        UIBezierPath *squiggle3 = [[UIBezierPath alloc] init];
-        
-        [squiggle2 moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.3)];
-        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.15) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.05)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
-        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.1) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.2)];
-        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.25) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.35)];
-        [squiggle2 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.3) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.2)];
-        [squiggle2 fill];
-        [squiggle2 stroke];
-        
-        [squiggle3 moveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.9)];
-        [squiggle3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.55, self.bounds.size.height * 0.75) controlPoint:CGPointMake(self.bounds.size.width * 0.1, self.bounds.size.height * 0.65)]; //QuadCurve:1个控制点的曲线 Curve:2个控制点的曲线
-        [squiggle3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.8, self.bounds.size.height * 0.7) controlPoint:CGPointMake(self.bounds.size.width * 0.7, self.bounds.size.height * 0.8)];
-        [squiggle3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.45, self.bounds.size.height * 0.85) controlPoint:CGPointMake(self.bounds.size.width * 0.9, self.bounds.size.height * 0.95)];
-        [squiggle3 addQuadCurveToPoint:CGPointMake(self.bounds.size.width * 0.2, self.bounds.size.height * 0.9) controlPoint:CGPointMake(self.bounds.size.width * 0.3, self.bounds.size.height * 0.8)];
-        [squiggle3 fill];
-        [squiggle3 stroke];
+    else if (self.number == 3){
+        [self drawOneSquiggleWithStartPoint:kORIGIN_Y1];
+        [self drawOneSquiggleWithStartPoint:kORIGIN_Y3];
+        [self drawOneSquiggleWithStartPoint:self.bounds.size.height - kORIGIN_Y3];
     }
 }
 
+-(void)drawOneSquiggleWithStartPoint:(CGFloat)origin_y{
+#define kORIGIN_X self.bounds.size.width/2
+#define kORIGIN_Y origin_y
+#define kFactor 0.2
+    NSLog(@"%F,%F",kORIGIN_X,kORIGIN_Y);
+    NSMutableArray* pAndCp = [NSMutableArray new];
+    
+    NSArray* p = @[[NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-128.500000)*kFactor, kORIGIN_Y + (45.000000)*kFactor)],
+                   [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-122.500000)*kFactor, kORIGIN_Y + (62.500000)*kFactor)],
+                   [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-140.500000)*kFactor, kORIGIN_Y + (-1.500000)*kFactor)]];
+    [pAndCp addObject:p];
+    
+    p = @[[NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-63.500000)*kFactor, kORIGIN_Y + (-51.000000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-106.500000)*kFactor, kORIGIN_Y + (-56.500000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-13.000000)*kFactor, kORIGIN_Y + (-46.500000)*kFactor)]];
+    [pAndCp addObject:p];
+    
+    p = @[[NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (42.000000)*kFactor, kORIGIN_Y + (-35.000000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (4.500000)*kFactor, kORIGIN_Y + (-27.500000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (74.000000)*kFactor, kORIGIN_Y + (-43.000000)*kFactor)]];
+    [pAndCp addObject:p];
+    
+    p = @[[NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (99.500000)*kFactor, kORIGIN_Y + (-64.000000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (79.500000)*kFactor, kORIGIN_Y + (-59.500000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (116.000000)*kFactor, kORIGIN_Y + (-65.000000)*kFactor)]];
+    [pAndCp addObject:p];
+    
+    p = @[[NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (128.500000)*kFactor, kORIGIN_Y + (-45.000000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (122.500000)*kFactor, kORIGIN_Y + (-62.500000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (140.500000)*kFactor, kORIGIN_Y + (1.500000)*kFactor)]];
+    [pAndCp addObject:p];
+    
+    p = @[[NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (63.500000)*kFactor, kORIGIN_Y + (51.000000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (106.500000)*kFactor, kORIGIN_Y + (56.500000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (13.000000)*kFactor, kORIGIN_Y + (46.500000)*kFactor)]];
+    [pAndCp addObject:p];
+    
+    p = @[[NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-42.000000)*kFactor, kORIGIN_Y + (35.000000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-4.500000)*kFactor, kORIGIN_Y + (27.500000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-74.000000)*kFactor, kORIGIN_Y + (43.000000)*kFactor)]];
+    [pAndCp addObject:p];
+    
+    p = @[[NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-99.500000)*kFactor, kORIGIN_Y + (64.000000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-79.500000)*kFactor, kORIGIN_Y + (59.500000)*kFactor)],
+          [NSValue valueWithCGPoint:CGPointMake(kORIGIN_X+ (-116.000000)*kFactor, kORIGIN_Y + (65.000000)*kFactor)]];
+    [pAndCp addObject:p];
+    
+    // this, we assume that 'pAndcp' is initialized. It can have any number of points.
+    UIBezierPath *path = [UIBezierPath new];
+    
+    CGPoint firstPoint = [[[pAndCp objectAtIndex:0] objectAtIndex:0] CGPointValue];
+    [path moveToPoint:firstPoint];
+    
+    // 'pAndCp' has 'n' points, first we draw 'n-1' curves.
+    for (int i = 0; i<pAndCp.count-1; i++) {
+        CGPoint endPoint = [[[pAndCp objectAtIndex:i+1] objectAtIndex:0] CGPointValue];
+        CGPoint cp1 = [[[pAndCp objectAtIndex:i] objectAtIndex:2] CGPointValue];
+        CGPoint cp2 = [[[pAndCp objectAtIndex:i+1] objectAtIndex:1] CGPointValue];
+        [path addCurveToPoint:endPoint controlPoint1:cp1 controlPoint2:cp2];
+    }
+    
+    // now we draw the last curve. connected between last and first point.
+    CGPoint endPoint = [[[pAndCp objectAtIndex:0] objectAtIndex:0] CGPointValue];
+    CGPoint cp1 = [[[pAndCp objectAtIndex:pAndCp.count-1] objectAtIndex:2] CGPointValue];
+    CGPoint cp2 = [[[pAndCp objectAtIndex:0] objectAtIndex:1] CGPointValue];
+    [path addCurveToPoint:endPoint controlPoint1:cp1 controlPoint2:cp2];
+    
+    
+    [[[self fillColor] colorWithAlphaComponent:[self drawShading]] setFill];
+    [[self fillColor] setStroke];
+    [path closePath];
+    [path fill];
+    [path stroke];
+}
 
 -(void)drawOneOvalWithStartPoint:(CGFloat)origin_y{
     #define kRADIUS 0.1*self.bounds.size.height

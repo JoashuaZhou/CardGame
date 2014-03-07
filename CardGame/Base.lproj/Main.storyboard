@@ -39,6 +39,10 @@
                                 <rect key="frame" x="20" y="20" width="280" height="402"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3UR-Tu-cah" appends="YES" id="WEc-d9-AaS"/>
+                                </connections>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Card to Start the game!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="UTr-sm-wgy">
                                 <rect key="frame" x="20" y="430" width="280" height="21"/>
@@ -49,6 +53,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="8p2-bB-1jH" firstAttribute="leading" secondItem="xcl-d4-iao" secondAttribute="leading" id="7ca-NF-45I"/>
                             <constraint firstAttribute="bottom" secondItem="8p2-bB-1jH" secondAttribute="bottom" constant="146" id="Der-Ep-4me"/>
@@ -75,6 +80,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yDo-V5-imb">
+                    <connections>
+                        <action selector="tapToBackHome:" destination="vXZ-lx-hvc" id="OBH-Sa-Av8"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pinchGestureRecognizer id="3UR-Tu-cah">
+                    <connections>
+                        <action selector="pinchCards:" destination="vXZ-lx-hvc" id="bPD-qz-1cX"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="v0Q-EK-GYo">
+                    <connections>
+                        <action selector="panCards:" destination="vXZ-lx-hvc" id="PP0-K1-2Ff"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="561" y="-189"/>
         </scene>
@@ -113,6 +133,10 @@
                                 <rect key="frame" x="20" y="20" width="280" height="402"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="dGl-hd-Sak" appends="YES" id="g24-fy-1A4"/>
+                                </connections>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Card to Start the game!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="31h-d6-Uwm">
                                 <rect key="frame" x="20" y="430" width="280" height="21"/>
@@ -149,6 +173,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o6X-cz-7PZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="dGl-hd-Sak"/>
             </objects>
             <point key="canvasLocation" x="561" y="561"/>
         </scene>
